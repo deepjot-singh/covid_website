@@ -40,12 +40,12 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{% url 'index' %}">
                         <!-- Logo icon -->
-                        <b><img src="{% static 'dashboard/images/logo.png' %}" alt="homepage" class="dark-logo" /></b>
+                        <b class="ml-5">COVID INFORMATION APPLICATION</b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="{% static 'dashboard/images/logo-text.png' %}" alt="homepage" class="dark-logo" /></span>
+
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -72,24 +72,15 @@
                         <li class="nav-label">Reports</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Covid Report</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="email-compose.html">Upload Report</a></li>
-                                <li><a href="email-read.html">Download Report</a></li>
+                                <li><a href="{% url 'upload-report' %}">Upload Report</a></li>
+                                <li><a href="{% url 'status-report' %}">Report Status</a></li>
 
                             </ul>
                         </li>
 
 
                         <li class="nav-label">Donations</li>
-                        <li> <a class="" href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Make Donation</span></a>
-
-                        </li>
-
-
-
-                        <li class="nav-label">Contact Us</li>
-
-                        <li> <a class="" href="#" aria-expanded="false"><i class="fa fa-map-marker"></i><span class="hide-menu">Contact Information</span></a>
-
+                        <li> <a class="" href="{% url 'donation' %}" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Make Donation</span></a>
                         </li>
 
                     </ul>
@@ -104,11 +95,10 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">HELLO {{ user }}</h3> </div>
+                    <h3 class="text-primary">Logged as: {{ request.session.name }}</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Logout</li>
+                        <li class="breadcrumb-item active"><a href="{% url 'logout' %}"> Logout</a></li>
                     </ol>
                 </div>
             </div>
