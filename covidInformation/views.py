@@ -9,10 +9,16 @@ def covidCasesInformation(request):
     count, date = getDataDaily()
     total_cases = getTotalCases()
     state_data = getStateData(total_cases)
+    max_state_name, max_state_count = getMaxStateData()
     context = {}
     context['DailyDataDate'] = date
     context['DailyDataCount'] = count
     context['StateData'] = state_data
+    context['TotalCount'] = total_cases
+    context['TodayCount'] = count[1]
+    context['MaxStateName'] = max_state_name
+    context['MaxStateCount'] = max_state_count
+
     return render(request, 'covidInformation.html', context)
 
 
@@ -32,10 +38,18 @@ def getTotalCases():
         total_count += int(data.count)
     return total_count
 
+def getMaxStateData():
+    max_state_data = CovidStateCount.objects.all().order_by('-count').first()
+
+    return max_state_data.stateName.stateName, max_state_data.count
+
 def getStateData(totalCase:int):
-    query = CovidStateCount.objects.all()
+    query = CovidStateCount.objects.all().order_by('-count')
     state_data = []
+
+
     for data in query:
+        print(data.stateName.stateName, data.count)
         state_percentage = int(int(data.count) * 100 / totalCase)
         state_data.append({"state": data.stateName.stateName, "percentage": state_percentage})
 

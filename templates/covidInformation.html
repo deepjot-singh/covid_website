@@ -112,8 +112,49 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
 
-
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-clock-o f-s-40 color-primary"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2>{{ TotalCount }}</h2>
+                                    <p class="m-b-0">Total Cases</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-check-circle-o f-s-40 color-primary"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2>{{ TodayCount }}</h2>
+                                    <p class="m-b-0">Today's Count</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-circle-o-notch f-s-40 color-primary"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2>{{ MaxStateCount }}</h2>
+                                    <p class="m-b-0">{{ MaxStateName }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row bg-white m-l-0 m-r-0 box-shadow ">
+
 
                     <!-- column -->
                     <div class="col-lg-8">
@@ -130,12 +171,35 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body browser">
-                                {% for data in StateData %}
-                                <p class="m-t-30 f-w-600">{{ data.state | safe }}<span class="pull-right">{{ data.percentage }}%</span></p>
-                                <div class="progress">
-                                    <div role="progressbar" style="width: {{ data.percentage }}%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">{{ data.percentage }}%</span> </div>
+                                <div class="table-responsive m-t-40" style="width: 100%; height: 350px;">
+                                            <table id="example23" class="display nowrap table table-hover "  cellspacing="0" width="100%">
+                                            <tbody style="">
+                                            {% for data in StateData %}
+                                                    <tr>
+
+                                                        <td>
+
+                                                            <p class="m-t-30 f-w-600">{{ data.state | safe }} <span class="pull-right">{{ data.percentage }}%</span></p>
+                                                            <div class="progress">
+                                                                <div role="progressbar" style="width: {{ data.percentage }}%; height:8px;" class="progress-bar bg-danger wow animated progress-animated">  </div>
+                                                            </div>
+                                                        </td>
+                                                        <td></td>
+
+                                                    </tr>
+
+                                            {% endfor %}
+
+
+                                                </tbody>
+                                            </table>
                                 </div>
-                                {% endfor %}
+<!--                                {% for data in StateData %}-->
+<!--                                <p class="m-t-30 f-w-600">{{ data.state | safe }}<span class="pull-right">{{ data.percentage }}%</span></p>-->
+<!--                                <div class="progress">-->
+<!--                                    <div role="progressbar" style="width: {{ data.percentage }}%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">{{ data.percentage }}%</span> </div>-->
+<!--                                </div>-->
+<!--                                {% endfor %}-->
 
                             </div>
                         </div>
@@ -152,7 +216,7 @@
             </div>
             <!-- End Container fluid  -->
             <!-- footer -->
-            <footer class="footer"> © 2018 All rights reserved. Template designed by <a href="https://colorlib.com">Colorlib</a></footer>
+            <footer class="footer"> © 2021 All rights reserved.</footer>
             <!-- End footer -->
         </div>
         <!-- End Page wrapper  -->

@@ -8,7 +8,7 @@ class StateName(models.Model):
 
 class CovidStateCount(models.Model):
     stateName = models.OneToOneField(StateName, on_delete=models.CASCADE, primary_key=True)
-    count = models.CharField(max_length=20, null=False)
+    count = models.IntegerField()
 
 
 class CovidDailyCount(models.Model):
